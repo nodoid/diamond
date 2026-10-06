@@ -434,9 +434,9 @@ Solution: take club; in tower THROW CLUB, take torch; in hut OPEN DRAWER, take a
 
 ### Français
 
-**Nom du produit** (256 max)
+**Nom du produit** (256 max ; doit être le nom réservé dans Partner Center)
 ```
-Le Diamant de l'Île Maudite
+Diamond of the Cursed Island
 ```
 
 **Description courte** (1000 max)
