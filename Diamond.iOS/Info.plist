@@ -13,10 +13,6 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>uk.co.allthejohnsons.diamond</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>MinimumOSVersion</key>
 	<string>15.0</string>
 	<key>NSHumanReadableCopyright</key>

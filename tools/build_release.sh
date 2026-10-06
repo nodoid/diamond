@@ -24,7 +24,8 @@ if [[ $WHAT != android ]]; then
       mkdir -p "$dir" && cp ~/Downloads/$f.mobileprovision "$dir/$uuid.mobileprovision"
     done
   done
-  rm -rf release/ios
+  # Clean first: an incremental build can keep the previous build number in the app's Info.plist.
+  rm -rf release/ios Diamond.iOS/obj/Release Diamond.iOS/bin/Release
   dotnet publish Diamond.iOS/Diamond.iOS.csproj -c Release -f net10.0-ios -p:DiamondIosProfile=rel-cursed -o release/ios
   ls -la release/ios/*.ipa
 fi
