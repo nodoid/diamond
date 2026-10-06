@@ -2,7 +2,7 @@
 
 Paste-ready sheets for each store and language are generated from this file into `store/<en|fr>/<store>/UPLOAD.txt` by `tools/make_upload_copy.py`.
 
-Everything to paste into App Store Connect (iOS and Mac), Google Play Console and Microsoft Partner Center, in **English** and **French**. Every field is within its store's limit (checked by `tools/check_listing.py`). The screenshots and graphics are generated into `store/en/` and `store/fr/` by `tools/capture_all.sh`. There are no app preview videos for this game.
+Everything to paste into App Store Connect (iOS and Mac), Google Play Console and Microsoft Partner Center, in **English** and **French**. Every field is within its store's limit (checked by `tools/check_listing.py`). The screenshots and graphics are generated into `store/en/` and `store/fr/` by `tools/capture_all.sh`. The app preview videos (iPhone, iPad, Mac; English and French) are made by `tools/make_preview_videos.sh` and saved in `~/Movies/The Diamond of Cursed Island/`.
 
 > **Before you submit:**
 > - The game is an unofficial remake of *Le Diamant de l'Île Maudite*, the 1984 Oric adventure by Bertrand d'Armagnac and Frédéric Baille, published by Loriciels. The island, the pictures, the sound and the code are all new; the story, the puzzles and the vocabulary follow the original. The title (in both languages) and the credit use the original's name and its authors' names, though. Stores can reject apps that use another party's name or IP without permission, so make sure you have the rights (or permission) to use the title before you publish. If not, rename the title in `Strings.cs`, `Directory.Build.props` and the platform name files.

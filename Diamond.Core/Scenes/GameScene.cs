@@ -320,11 +320,27 @@ public sealed class GameScene : Scene, IPausable
         _line.Set(text);
     }
 
+    /// <summary>The word highlighted in the list for the preview video (as if a finger were on it).</summary>
+    private Verb _demoVerb;
+    private Noun _demoNoun;
+
+    /// <summary>Shows the word list with one word highlighted: the verbs page, or the nouns page for a verb.</summary>
+    internal void PickerDemo(bool nouns, Verb verb, Noun noun)
+    {
+        _picker = nouns ? Picker.Nouns : Picker.Verbs;
+        _pickVerb = verb;
+        _pickPage = 0;
+        _demoVerb = nouns ? Verb.None : verb;
+        _demoNoun = nouns ? noun : Noun.None;
+    }
+
     /// <summary>Opens the word list at the nouns for a verb (Verb.None closes it).</summary>
     internal void OpenPicker(Verb verb)
     {
         _picker = verb == Verb.None ? Picker.Closed : Picker.Nouns;
         _pickVerb = verb;
+        _demoVerb = Verb.None;
+        _demoNoun = Noun.None;
         _pickPage = 0;
     }
 
@@ -559,7 +575,9 @@ public sealed class GameScene : Scene, IPausable
             if (index >= words.Count)
                 break;
             var r = Cell(i);
-            Ui.Button(c, r, words[index].Text, pointer is { } v && r.Contains(v));
+            var w = words[index];
+            bool demo = (_demoVerb != Verb.None && w.Verb == _demoVerb) || (_demoNoun != Noun.None && w.Noun == _demoNoun);
+            Ui.Button(c, r, w.Text, demo || (pointer is { } v && r.Contains(v)));
         }
         bool hotBack = pointer is { } pb && PickBack.Contains(pb);
         Ui.Button(c, PickBack, Strings.Back, hotBack);

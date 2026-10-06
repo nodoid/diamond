@@ -122,8 +122,18 @@ Capture mode (`dotnet <bin>/Diamond.dll --capture <dir> [--mobile] [--lang fr|en
 plays the walkthrough on autopilot, saves 20 stills (`01-title` to `20-instructions`, 2400 x 2240
 at the default `--scale 10`) into `<dir>/stills`, and quits. `--mobile` shows the touch layout.
 `tools/make_store_assets.py` fits them to every store's sizes over a blurred copy of themselves
-and paints the text-free Microsoft Store hero art from the title backdrop and the diamond. There are
-no app preview videos.
+and paints the text-free Microsoft Store hero art from the title backdrop and the diamond.
+
+App preview videos are made after every release build:
+
+```sh
+tools/make_preview_videos.sh     # iPhone 1920x886, iPad 1600x1200 and Mac 1920x1080, English and French
+```
+
+`--capture <dir> --video` plays the walkthrough's highlights at 30 fps (orders picked from the WORDS
+list in the touch layout, typed on the Mac) and writes the frames and a soundtrack (the Toccata and
+the sound effects); the script encodes them (about 28 s each, within Apple's 15-30 s) and saves them
+only in `~/Movies/The Diamond of Cursed Island/`.
 
 ## Licence
 

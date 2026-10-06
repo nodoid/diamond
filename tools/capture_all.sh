@@ -6,7 +6,7 @@
 #
 # The capture mode plays the walkthrough on autopilot and saves 20 stills (01-title .. 20-instructions)
 # at 2400 x 2240 into <dir>/<en|fr>/<desktop|mobile>/stills, then quits. Mobile captures show the
-# touch layout (arrow buttons and WORDS). There are no videos for this game.
+# touch layout (arrow buttons and WORDS). Videos: tools/make_preview_videos.sh.
 # Windows stills come from tools/build_windows.sh capture (release/windows/capture), if present.
 set -euo pipefail
 cd "$(dirname "$0")/.."

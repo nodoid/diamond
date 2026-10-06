@@ -14,9 +14,10 @@ namespace Diamond.Core.Demo;
 /// Store screenshots: plays the walkthrough on autopilot and saves the screen at chosen moments,
 /// at high resolution (default 10x: 2400 x 2240).
 ///
-///     Diamond --capture &lt;folder&gt; [--mobile] [--lang fr|en] [--scale n]
+///     Diamond --capture &lt;folder&gt; [--video] [--mobile] [--lang fr|en] [--scale n]
 ///
-/// Each still is written to &lt;folder&gt;/stills/NN-name.png and the game quits when done.
+/// Each still is written to &lt;folder&gt;/stills/NN-name.png and the game quits when done. With --video,
+/// the app preview frames and soundtrack are written instead (see <see cref="VideoDirector"/>).
 /// </summary>
 public sealed class CaptureDirector
 {
@@ -48,6 +49,8 @@ public sealed class CaptureDirector
     ];
 
     private readonly string _folder;
+    private VideoDirector _video;
+    private bool _videoMode;
     private IEnumerator<Command> _walk;
     private Adventure _adventure;
     private GameScene _game;
@@ -74,6 +77,8 @@ public sealed class CaptureDirector
         {
             if (args[k] == "--mobile")
                 d.Mobile = true;
+            else if (args[k] == "--video")
+                d._videoMode = true;
             else if (args[k] == "--lang" && k + 1 < args.Length)
                 d.Language = Strings.FromIso(args[k + 1]);
             else if (args[k] == "--scale" && k + 1 < args.Length && float.TryParse(args[k + 1],
@@ -85,6 +90,13 @@ public sealed class CaptureDirector
 
     public void Update(DiamondGame game)
     {
+        if (_videoMode)
+        {
+            Strings.Current = Language ?? Strings.Current;
+            _video ??= new VideoDirector(_folder, Mobile);
+            _video.Update(game);
+            return;
+        }
         if (_adventure == null)
         {
             Strings.Current = Language ?? Strings.Current;
@@ -140,6 +152,11 @@ public sealed class CaptureDirector
 
     public void AfterDraw(RenderTarget2D target)
     {
+        if (_videoMode)
+        {
+            _video?.AfterDraw(target);
+            return;
+        }
         if (!_save)
             return;
         _save = false;
