@@ -533,7 +533,9 @@ public sealed class GameScene : Scene, IPausable
         Ui.ArrowButton(c, BackButton, 2, Hot(BackButton));
         Ui.ArrowButton(c, RightButton, 1, Hot(RightButton));
         Ui.Button(c, WordsButton, Strings.Words, Hot(WordsButton) || _picker != Picker.Closed);
-        Ui.Button(c, MenuButton, Strings.Menu, Hot(MenuButton));
+        // The word list has its own BACK button: no MENU while it is open.
+        if (_picker == Picker.Closed)
+            Ui.Button(c, MenuButton, Strings.Menu, Hot(MenuButton));
     }
 
     private void DrawPicker(Canvas c)
