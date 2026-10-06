@@ -366,9 +366,9 @@ Partner Center asks for more than the other stores. Everything below is needed f
 
 ### English
 
-**Product name** (256 max)
+**Product name** (256 max; must be the name reserved in Partner Center)
 ```
-The Diamond of Cursed Island
+Diamond of the Cursed Island
 ```
 
 **Short description** (1000 max)

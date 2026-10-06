@@ -210,7 +210,7 @@ def main():
 
         # ---------------- Microsoft Store (Partner Center needs every part below, every time)
         t = heading(f'THE DIAMOND OF CURSED ISLAND - MICROSOFT STORE - {name.upper()}')
-        t += f'Partner Center > {TITLE["en"]} > Submission > Store listings > {ms_lang}\n\n'
+        t += f'Partner Center > Diamond of the Cursed Island > Submission > Store listings > {ms_lang}\n\n'
         ms_labels = ['Product name', 'Short description', 'Description', 'Product features (one per box)',
                      'Search terms (one per box)', "What's new in this version", 'Notes for certification']
         for label, (_, limit, body) in zip(ms_labels, ms[key]):

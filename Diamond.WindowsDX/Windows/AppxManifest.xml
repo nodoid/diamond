@@ -13,7 +13,7 @@
             ProcessorArchitecture="$(ARCH)" />
 
   <Properties>
-    <DisplayName>The Diamond of Cursed Island</DisplayName>
+    <DisplayName>Diamond of the Cursed Island</DisplayName>
     <PublisherDisplayName>all-the-johnsons</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
     <Description>The Diamond of Cursed Island (Le Diamant de l'Île Maudite): a survival adventure. By PFJ, based on the 1984 Loriciels game.</Description>
@@ -31,7 +31,7 @@
   <Applications>
     <Application Id="Diamond" Executable="Diamond.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
-        DisplayName="The Diamond of Cursed Island"
+        DisplayName="Diamond of the Cursed Island"
         Description="The Diamond of Cursed Island (Le Diamant de l'Île Maudite): a survival adventure. By PFJ, based on the 1984 Loriciels game."
         BackgroundColor="#000000"
         Square150x150Logo="Assets\Square150x150Logo.png"
