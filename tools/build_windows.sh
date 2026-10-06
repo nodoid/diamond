@@ -12,6 +12,9 @@ cd "$(dirname "$0")/.."
 
 VM=${DIAMOND_VM:-"Windows 11"}
 VERSION=$(dotnet msbuild Diamond.WindowsDX/Diamond.WindowsDX.csproj -getProperty:Version)
+BUILD=$(dotnet msbuild Diamond.WindowsDX/Diamond.WindowsDX.csproj -getProperty:BuildNumber)
+# Package version major.minor.build.0: the Store needs it to rise with every upload and the last part to be 0.
+PKGVER="${VERSION%.*}.$BUILD.0"
 STAGE="$HOME/Downloads/diamond-vm-transfer"
 WSTAGE='Z:\Downloads\diamond-vm-transfer'
 out=release/windows
@@ -53,11 +56,11 @@ for arch in x64 arm64; do
   mkdir -p $pkg && (cd $pkg && { unzip -q "$OLDPWD/$out/Diamond-$VERSION-$arch.zip" 2>/dev/null || [[ $? -eq 1 ]]; })
   mkdir -p $pkg/Assets
   cp Diamond.WindowsDX/Windows/Assets/*.png $pkg/Assets/
-  sed -e "s/\$(VERSION)/$VERSION.0/" -e "s/\$(ARCH)/$arch/" Diamond.WindowsDX/Windows/AppxManifest.xml > $pkg/AppxManifest.xml
+  sed -e "s/\$(VERSION)/$PKGVER/" -e "s/\$(ARCH)/$arch/" Diamond.WindowsDX/Windows/AppxManifest.xml > $pkg/AppxManifest.xml
   python3 tools/make_msix.py $pkg "$out/Diamond-$VERSION-$arch.msix"
   rm -rf "$(dirname $pkg)"
 done
 [[ -d "$STAGE/capture" ]] && cp -R "$STAGE/capture" "$out/capture"
 rm -rf "$STAGE"
-echo "Windows: $out/Diamond-$VERSION-{x64,arm64}.msix (version $VERSION.0)"
+echo "Windows: $out/Diamond-$VERSION-{x64,arm64}.msix (package version $PKGVER)"
 ls -la $out
