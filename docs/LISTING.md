@@ -181,8 +181,8 @@ Part 1 (the island): take the club on the beach. In the tower, THROW CLUB at the
 Part 2 (the underground): take the rope; PRESS EYE of the Buddha, take and WEAR the HELMET in the secret chamber; take the hammer and the bucket; at the well TIE BUCKET, LOWER BUCKET, RAISE BUCKET, DRINK WATER. BREAK the rusty GRILLE, go past the ghost, take the sabre and THROW SABRE at the gorilla, then fetch it from its den. ASK SAGE, OPEN DOOR, BEHEAD DRAGON, take the DIAMOND, take the jerrycan on the ramp, and in the hangar PRESS BUTTON, FILL FUEL, CLIMB HELICOPTER, FLY. That scores 100/100.
 ```
 
-**Screenshots:** `store/<en|fr>/app-store/iphone-6.9in-2868x1320/` (also `iphone-6.5in-2688x1242/`) and `ipad-13in-2752x2064/`, 10 each, landscape.
-**App previews:** none.
+**Screenshots:** `store/<en|fr>/app-store/iphone-dynamic-island-medium-2622x1206/` (iPhone with Dynamic Island, medium: required), `iphone-dynamic-island-large-2868x1320/` (Dynamic Island, large) and `ipad-13in-2752x2064/`, 10 each, landscape.
+**App previews:** `~/Movies/The Diamond of Cursed Island/`: the iPhone (1920 x 886) and iPad (1600 x 1200) previews, English and French, about 28 s each.
 **Icon:** `store/en/app-store/icon-1024.png`.
 
 ---
@@ -258,7 +258,7 @@ Un remake non officiel par PFJ, avec tout le respect et la reconnaissance dus au
 ```
 
 **Screenshots:** `store/<en|fr>/mac-app-store/screenshots-2880x1800/` (or `screenshots-1440x900/`), 10.
-**App preview:** none.
+**App preview:** `~/Movies/The Diamond of Cursed Island/`: the Mac preview (1920 x 1080), English and French.
 **Review notes:** the same as iOS (see *App Review* above).
 
 ---

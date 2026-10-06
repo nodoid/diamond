@@ -11,6 +11,10 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Version and build number of the release builds, from Directory.Build.props.
+_PROPS = open(os.path.join(ROOT, 'Directory.Build.props')).read()
+VERSION = re.search(r'<Version>([^<]+)</Version>', _PROPS).group(1)
+BUILD = re.search(r'<BuildNumber>([^<]+)</BuildNumber>', _PROPS).group(1)
 LISTING = os.path.join(ROOT, 'docs', 'LISTING.md')
 STORE = os.path.join(ROOT, 'store')
 SUPPORT = 'https://<your web site>/Diamond-Support.html  (upload ~/Downloads/Diamond-Support.html)'
@@ -131,12 +135,13 @@ def main():
         for label, (_, limit, body) in zip(labels_ios, fields):
             t += field(label, limit, body)
         t += files([
-            f'iPhone 6.9" screenshots (10): {d}/app-store/iphone-6.9in-2868x1320/',
-            f'iPhone 6.5" screenshots (10, if asked): {d}/app-store/iphone-6.5in-2688x1242/',
+            f'iPhone, Dynamic Island medium screenshots (10, required): {d}/app-store/iphone-dynamic-island-medium-2622x1206/',
+            f'iPhone, Dynamic Island large screenshots (10): {d}/app-store/iphone-dynamic-island-large-2868x1320/',
             f'iPad 13" screenshots (10): {d}/app-store/ipad-13in-2752x2064/',
-            'App previews: none',
+            f'App previews: ~/Movies/The Diamond of Cursed Island/Cursed Island - iPhone app preview 1920x886 - {name}.mp4 '
+            f'and Cursed Island - iPad app preview 1600x1200 - {name}.mp4',
             'App icon: comes from the build (store/en/app-store/icon-1024.png is the same picture)',
-            'Build: release/ios/Diamond.ipa (upload with Transporter; version 1.0.0, build 1)',
+            f'Build: release/ios/Diamond.ipa (upload with Transporter; version {VERSION}, build {BUILD})',
         ])
         if lang == 'en':
             t += answers(app_info)
@@ -159,8 +164,8 @@ def main():
         t += field("What's new", fields[5][1], fields[5][2])
         t += files([
             f'Screenshots (10): {d}/mac-app-store/screenshots-2880x1800/ (or screenshots-1440x900/)',
-            'App preview: none',
-            'Build: release/macos/Diamond.pkg (upload with Transporter; version 1.0.0, build 1)',
+            f'App preview: ~/Movies/The Diamond of Cursed Island/Cursed Island - Mac app preview 1920x1080 - {name}.mp4',
+            f'Build: release/macos/Diamond.pkg (upload with Transporter; version {VERSION}, build {BUILD})',
         ])
         if lang == 'en':
             t += answers(app_info + [('Age rating', 'Same answers as iOS (9+)'),

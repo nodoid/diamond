@@ -168,10 +168,12 @@ def stills(cap):
         windows = os.path.join(cap, lang, 'windows', 'stills')
         out = os.path.join(STORE, lang)
 
-        # Apple App Store (iOS): landscape iPhone 6.9" and 6.5", iPad 13".
+        # Apple App Store (iOS), landscape. Apple groups iPhones by display type: "Dynamic Island,
+        # medium" is the required set; "Dynamic Island, large" covers the big phones (and stands in for
+        # Face ID, large). iPad 13" is required for iPad.
         a = os.path.join(out, 'app-store')
-        screenshots(mobile, os.path.join(a, 'iphone-6.9in-2868x1320'), 2868, 1320)
-        screenshots(mobile, os.path.join(a, 'iphone-6.5in-2688x1242'), 2688, 1242)
+        screenshots(mobile, os.path.join(a, 'iphone-dynamic-island-medium-2622x1206'), 2622, 1206)
+        screenshots(mobile, os.path.join(a, 'iphone-dynamic-island-large-2868x1320'), 2868, 1320)
         screenshots(mobile, os.path.join(a, 'ipad-13in-2752x2064'), 2752, 2064)
         if icon:
             os.makedirs(a, exist_ok=True)
