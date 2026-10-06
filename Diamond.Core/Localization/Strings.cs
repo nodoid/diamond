@@ -173,6 +173,10 @@ public static class Strings
     public static string NextPage(bool mobile) =>
         mobile ? L("TOUCHEZ POUR CONTINUER", "TAP TO CONTINUE") : L("ESPACE POUR CONTINUER", "SPACE TO CONTINUE");
 
+    /// <summary>The prompt at the foot of the instructions pages.</summary>
+    public static string InstructionsNext(bool mobile) =>
+        mobile ? L("Touchez pour continuer", "Tap to continue") : L("ESPACE POUR CONTINUER", "SPACE TO CONTINUE");
+
     public static string StoryHeader => L("LE JOURNAL DE STEVEN SMITH", "THE JOURNAL OF STEVEN SMITH");
 
     public static string Story => L(

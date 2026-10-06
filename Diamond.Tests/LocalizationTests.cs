@@ -32,6 +32,7 @@ public class LocalizationTests
                 Drawable(Strings.PressToStart(mobile));
                 Drawable(Strings.TypeHere(mobile));
                 Drawable(Strings.RetryPart2(mobile));
+                Drawable(Strings.InstructionsNext(mobile));
                 foreach (var mode in new[] { ParserMode.Short, ParserMode.Long })
                     foreach (var page in Strings.InstructionPages(mobile, mode))
                         Drawable(page);

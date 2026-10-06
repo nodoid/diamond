@@ -18,6 +18,17 @@ public sealed class InputManager
     private GamePadState _prevPad;
     private readonly List<Vector2> _taps = new();
     private readonly List<char> _typed = new();
+    private readonly HashSet<Keys> _keyEvents = new();
+
+    /// <summary>
+    /// Records a key press reported by the window. Keys are also polled each frame, but a quick tap can
+    /// start and end between two polls; this makes sure it still counts.
+    /// </summary>
+    public void KeyPressed(Keys key)
+    {
+        lock (_keyEvents)
+            _keyEvents.Add(key);
+    }
 
     public InputManager(bool isMobile)
     {
@@ -70,7 +81,13 @@ public sealed class InputManager
         var keys = Keyboard.GetState();
         var pad = GamePad.GetState(PlayerIndex.One);
         bool Down(Keys k) => isActive && keys.IsKeyDown(k);
-        bool Hit(Keys k) => isActive && keys.IsKeyDown(k) && !_prevKeys.IsKeyDown(k);
+        HashSet<Keys> events;
+        lock (_keyEvents)
+        {
+            events = new HashSet<Keys>(_keyEvents);
+            _keyEvents.Clear();
+        }
+        bool Hit(Keys k) => isActive && ((keys.IsKeyDown(k) && !_prevKeys.IsKeyDown(k)) || events.Contains(k));
         bool PadHit(Buttons b) => pad.IsButtonDown(b) && !_prevPad.IsButtonDown(b);
 
         float kx = 0, kz = 0;

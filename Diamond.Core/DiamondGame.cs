@@ -82,12 +82,16 @@ public class DiamondGame : Game
 
     internal Scene CurrentCaptureScene => Capture != null ? _scene : null;
 
+    /// <summary>Run once, on the first frame (the desktop head uses it to bring the window to the front).</summary>
+    public Action<DiamondGame> FirstFrame { get; set; }
+
     /// <summary>Characters typed since the last frame (keyboard text input; '\b' backspace, '\r' enter).</summary>
     public Queue<char> TypedText => _text;
 
     protected override void Initialize()
     {
         Window.Title = "The Diamond of Cursed Island - Le Diamant de l'Île Maudite";
+        Window.KeyDown += (_, e) => Input?.KeyPressed(e.Key);
         Window.TextInput += (_, e) =>
         {
             if (_text.Count < 64)
@@ -161,6 +165,11 @@ public class DiamondGame : Game
             Capture.Update(this);
             base.Update(gameTime);
             return;
+        }
+        if (FirstFrame != null)
+        {
+            FirstFrame(this);
+            FirstFrame = null;
         }
         UpdateDestination();
         Input.Update(ToVirtual, IsActive);

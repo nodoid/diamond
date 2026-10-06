@@ -47,6 +47,6 @@ public sealed class InstructionsScene : Scene
         string text = Strings.InstructionPages(Game.IsMobile, Game.Settings.Parser)[_page];
         Ui.Paragraphs(c, text, 6, 40, 38, Color.White);
         c.TextCentered(200, Strings.Page(_page + 1, Pages), Ui.Sky);
-        Ui.Blink(c, Ticks, 212, Strings.NextPage(Game.IsMobile));
+        Ui.Blink(c, Ticks, 212, Strings.InstructionsNext(Game.IsMobile));
     }
 }
