@@ -56,7 +56,7 @@ Windows manifest).
 | Project | Target |
 |---|---|
 | `Diamond.Core` | The whole game (net10.0): island, parser, rules, renderer, scenes, input, audio, capture mode |
-| `Diamond.Android` | Android 6+ (API 23), targets API 32 |
+| `Diamond.Android` | Android 6+ (API 23), targets API 37, the latest release |
 | `Diamond.iOS` | iOS 15+ (iPhone and iPad, landscape) |
 | `Diamond.DesktopGL` | macOS 12+ (also runs on Linux and Windows) |
 | `Diamond.WindowsDX` | Windows (DirectX), packaged as MSIX for the Microsoft Store |

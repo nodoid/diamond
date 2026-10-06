@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
-	<!-- Target API 32 (Android 12L). Keep it at 32. -->
-	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="32" />
+	<!-- Always the latest Android API level (37, Android 17). -->
+	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="37" />
 	<application
 		android:hardwareAccelerated="true"
 		android:icon="@mipmap/icon"

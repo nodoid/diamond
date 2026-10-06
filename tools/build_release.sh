@@ -3,7 +3,7 @@
 #   release/android/*.aab  (upload to Google Play)
 #   release/android/*.apk  (for side-loading / testing)
 #   release/ios/*.ipa      (upload to App Store Connect)
-# Android: targets API 32; signed with ~/keys/diamond-upload.jks, whose password is read from the macOS
+# Android: targets the latest release API (37); signed with ~/keys/diamond-upload.jks, whose password is read from the macOS
 # Keychain (service "Diamond Android upload keystore", account diamond-upload). tools/make_keystore.sh
 # creates both. iOS: "Apple Distribution: Paul Johnson (3UH7BE38T3)" and the rel-cursed profile
 # (~/Downloads/relcursed.mobileprovision, installed by this script).

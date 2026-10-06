@@ -17,7 +17,7 @@ Everything to paste into App Store Connect (iOS and Mac), Google Play Console an
 | App name | The Diamond of Cursed Island (French: Le Diamant de l'Île Maudite) |
 | Home-screen name | Cursed Island (French: L'Île Maudite) |
 | Bundle ID (iOS, macOS) | `uk.co.allthejohnsons.diamond` |
-| Package name (Android) | `uk.co.allthejohnsons.diamond` (min API 23, target API 32) |
+| Package name (Android) | `uk.co.allthejohnsons.diamond` (min API 23, target API 37) |
 | Android upload key | `~/keys/diamond-upload.jks`, alias `diamond`, password in Keychain ("Diamond Android upload keystore"), created by `tools/make_keystore.sh` |
 | Windows package identity | `49556nodoid.DiamondoftheCursedIsland`, publisher display name `all-the-johnsons` |
 | Provisioning profiles | iOS `rel-cursed` (App Store), `devel-cursed`; macOS `relcursedmac.provisionprofile` (App Store), `develcursedmac.provisionprofile` |
