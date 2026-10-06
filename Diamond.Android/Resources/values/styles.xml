@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Launch screen before Android 12: the island picture, centred on black. -->
+  <style name="Theme.Splash" parent="android:Theme.NoTitleBar.Fullscreen">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+  <style name="MainTheme" parent="android:Theme.NoTitleBar.Fullscreen" />
+</resources>

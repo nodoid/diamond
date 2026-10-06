@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+    <!-- targetSdkVersion is 32 (AndroidManifest.xml); compiled against the installed platform. -->
+    <ApplicationId>uk.co.allthejohnsons.diamond</ApplicationId>
+    <ApplicationTitle>Cursed Island</ApplicationTitle>
+    <ApplicationVersion>$(BuildNumber)</ApplicationVersion>
+    <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
+    <AssemblyName>Diamond</AssemblyName>
+    <RootNamespace>Diamond.Android</RootNamespace>
+  </PropertyGroup>
+  <!-- Play upload key, if present. The password is never stored: pass it in DIAMOND_KEYSTORE_PASS. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' And Exists('$(HOME)/keys/diamond-upload.jks')">
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>$(HOME)/keys/diamond-upload.jks</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>diamond</AndroidSigningKeyAlias>
+    <AndroidSigningStorePass>env:DIAMOND_KEYSTORE_PASS</AndroidSigningStorePass>
+    <AndroidSigningKeyPass>env:DIAMOND_KEYSTORE_PASS</AndroidSigningKeyPass>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diamond.Core\Diamond.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Android" Version="$(MonoGameVersion)" />
+  </ItemGroup>
+</Project>

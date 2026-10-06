@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Diamond.Core/Diamond.Core.csproj" />
+  <Project Path="Diamond.DesktopGL/Diamond.DesktopGL.csproj" />
+  <Project Path="Diamond.WindowsDX/Diamond.WindowsDX.csproj" />
+  <Project Path="Diamond.iOS/Diamond.iOS.csproj" />
+  <Project Path="Diamond.Android/Diamond.Android.csproj" />
+  <Project Path="Diamond.Tests/Diamond.Tests.csproj" />
+</Solution>

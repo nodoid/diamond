@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Microsoft Store package manifest. Identity and publisher are the ones reserved in Partner
+     Center; tools/build_windows.sh fills in the version and architecture. -->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap rescap">
+
+  <Identity Name="49556nodoid.DiamondoftheCursedIsland"
+            Publisher="CN=A6EAEB04-6634-41C1-BDFE-695819ECE444"
+            Version="$(VERSION)"
+            ProcessorArchitecture="$(ARCH)" />
+
+  <Properties>
+    <DisplayName>The Diamond of Cursed Island</DisplayName>
+    <PublisherDisplayName>all-the-johnsons</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <Description>The Diamond of Cursed Island (Le Diamant de l'Île Maudite): a survival adventure. By PFJ, based on the 1984 Loriciels game.</Description>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-gb" />
+    <Resource Language="fr-fr" />
+  </Resources>
+
+  <Applications>
+    <Application Id="Diamond" Executable="Diamond.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="The Diamond of Cursed Island"
+        Description="The Diamond of Cursed Island (Le Diamant de l'Île Maudite): a survival adventure. By PFJ, based on the 1984 Loriciels game."
+        BackgroundColor="#000000"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"
+                         Square71x71Logo="Assets\Square71x71Logo.png"
+                         Square310x310Logo="Assets\Square310x310Logo.png"
+                         ShortName="Cursed Island">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#000000" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

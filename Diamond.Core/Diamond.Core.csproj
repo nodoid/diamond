@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Diamond.Core</RootNamespace>
+    <AssemblyName>Diamond.Core</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Compile against MonoGame only; each platform head supplies its own MonoGame runtime. -->
+    <PackageReference Include="MonoGame.Framework.Native" Version="$(MonoGameVersion)">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- High-resolution artwork drawn by tools/make_backgrounds.py and tools/make_sprites.py, loaded by name. -->
+    <EmbeddedResource Include="Art\*.png" LogicalName="Art.%(Filename).png" />
+    <EmbeddedResource Include="Art\*.jpg" LogicalName="Art.%(Filename).jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Diamond.Tests" />
+  </ItemGroup>
+</Project>

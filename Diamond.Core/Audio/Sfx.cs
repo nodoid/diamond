@@ -1,0 +1,33 @@
+namespace Diamond.Core.Audio;
+
+public enum Sfx
+{
+    Step,
+    Bump,
+    Take,
+    Drop,
+    Door,
+    Locked,
+    Climb,
+    Hurt,
+    Hit,
+    Hiss,
+    Roar,
+    Ghost,
+    Drink,
+    Eat,
+    Splash,
+    Dig,
+    Fire,
+    Engine,
+    Explosion,
+    Magic,
+    Treasure,
+    Victory,
+    Death,
+    Menu,
+    Start,
+    Warning,
+    Key,
+    Beep,
+}

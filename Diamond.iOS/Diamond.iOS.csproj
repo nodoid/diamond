@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
+    <ApplicationId>uk.co.allthejohnsons.diamond</ApplicationId>
+    <ApplicationTitle>Cursed Island</ApplicationTitle>
+    <ApplicationVersion>$(BuildNumber)</ApplicationVersion>
+    <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
+    <RootNamespace>Diamond.iOS</RootNamespace>
+    <AssemblyName>Diamond</AssemblyName>
+    <AppIcon>AppIcon</AppIcon>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <!-- Profiles are installed locally from ~/Downloads (never committed). tools/build_release.sh finds
+       the one for uk.co.allthejohnsons.diamond and passes its name in DiamondIosProfile. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <CodesignKey>Apple Development: Paul Johnson (WFWPL93CN6)</CodesignKey>
+    <CodesignProvision Condition="'$(DiamondIosProfile)' != ''">$(DiamondIosProfile)</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+    <CodesignKey>Apple Distribution: Paul Johnson (3UH7BE38T3)</CodesignKey>
+    <CodesignProvision Condition="'$(DiamondIosProfile)' != ''">$(DiamondIosProfile)</CodesignProvision>
+    <ArchiveOnBuild>true</ArchiveOnBuild>
+    <BuildIpa>true</BuildIpa>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Localised home-screen name: "L'Île Maudite" in French. -->
+    <BundleResource Include="Resources\**\*.strings" />
+    <!-- Launch screen picture (LaunchScreen.storyboard). -->
+    <BundleResource Include="Resources\LaunchSplash*.png" LogicalName="%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diamond.Core\Diamond.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.iOS" Version="$(MonoGameVersion)" />
+  </ItemGroup>
+</Project>
