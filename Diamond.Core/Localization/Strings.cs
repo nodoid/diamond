@@ -119,6 +119,7 @@ public static class Strings
     public static string ChooseVerb => L("CHOISISSEZ UN VERBE", "CHOOSE A VERB");
     public static string ChooseNoun(string verb) => L("CHOISISSEZ UN NOM POUR ", "CHOOSE A NOUN FOR ") + verb;
     public static string Alone => L("(SEUL)", "(ALONE)");
+    public static string NothingKnown => L("Vous n'avez encore rien vu de tel.", "You haven't come across anything yet.");
     public static string Back => L("RETOUR", "BACK");
     public static string More => L("SUITE", "MORE");
     public static string Saved => L("Partie sauvegardée.", "Game saved.");

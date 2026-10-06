@@ -551,6 +551,8 @@ public sealed class GameScene : Scene, IPausable
         c.TextCentered(3, title, Ui.Gold);
         int perPage = PickRows * PickCols;
         var pointer = Game.Input.Pointer;
+        if (words.Count == 0)
+            c.TextCentered(90, Strings.NothingKnown, Ui.Sky);
         for (int i = 0; i < perPage; i++)
         {
             int index = _pickPage * perPage + i;

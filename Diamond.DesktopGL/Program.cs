@@ -43,6 +43,9 @@ internal static class Program
         using var game = new DiamondGame();
         // --capture <folder> [--mobile] [--lang fr|en] [--scale n] records the store screenshots.
         game.Capture = Core.Demo.CaptureDirector.FromArgs(args);
+        // Keyboard events from the window: every press (even a tap between two polls) and typed text.
+        game.Window.KeyDown += (_, e) => game.KeyPressed(e.Key);
+        game.Window.TextInput += (_, e) => game.CharacterTyped(e.Key, e.Character);
         // Started from a terminal, the window opens behind it without the keyboard: bring it to the front.
         game.FirstFrame = g =>
         {

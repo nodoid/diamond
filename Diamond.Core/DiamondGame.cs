@@ -85,18 +85,26 @@ public class DiamondGame : Game
     /// <summary>Run once, on the first frame (the desktop head uses it to bring the window to the front).</summary>
     public Action<DiamondGame> FirstFrame { get; set; }
 
+    /// <summary>
+    /// A key press reported by the window (desktop heads only: GameWindow.KeyDown and TextInput exist in
+    /// MonoGame's DesktopGL and WindowsDX libraries but not in its Android and iOS ones, so the shared
+    /// code must never subscribe to them itself).
+    /// </summary>
+    public void KeyPressed(Keys key) => Input?.KeyPressed(key);
+
+    /// <summary>A character typed on a keyboard (desktop heads only, see <see cref="KeyPressed"/>).</summary>
+    public void CharacterTyped(Keys key, char character)
+    {
+        if (_text.Count < 64)
+            _text.Enqueue(key == Keys.Back ? '\b' : key == Keys.Enter ? '\r' : character);
+    }
+
     /// <summary>Characters typed since the last frame (keyboard text input; '\b' backspace, '\r' enter).</summary>
     public Queue<char> TypedText => _text;
 
     protected override void Initialize()
     {
         Window.Title = "The Diamond of Cursed Island - Le Diamant de l'Île Maudite";
-        Window.KeyDown += (_, e) => Input?.KeyPressed(e.Key);
-        Window.TextInput += (_, e) =>
-        {
-            if (_text.Count < 64)
-                _text.Enqueue(e.Key == Keys.Back ? '\b' : e.Key == Keys.Enter ? '\r' : e.Character);
-        };
         if (Capture != null)
         {
             // Captures render as fast as possible, even when the display is asleep.
