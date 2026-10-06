@@ -528,12 +528,15 @@ public sealed class GameScene : Scene, IPausable
     {
         var p = Game.Input.Pointer;
         bool Hot(RectF r) => p is { } v && r.Contains(v);
-        Ui.ArrowButton(c, LeftButton, -1, Hot(LeftButton));
-        Ui.ArrowButton(c, ForwardButton, 0, Hot(ForwardButton));
-        Ui.ArrowButton(c, BackButton, 2, Hot(BackButton));
-        Ui.ArrowButton(c, RightButton, 1, Hot(RightButton));
+        // While the word list is open only WORDS shows: the list has its own BACK button.
+        if (_picker == Picker.Closed)
+        {
+            Ui.ArrowButton(c, LeftButton, -1, Hot(LeftButton));
+            Ui.ArrowButton(c, ForwardButton, 0, Hot(ForwardButton));
+            Ui.ArrowButton(c, BackButton, 2, Hot(BackButton));
+            Ui.ArrowButton(c, RightButton, 1, Hot(RightButton));
+        }
         Ui.Button(c, WordsButton, Strings.Words, Hot(WordsButton) || _picker != Picker.Closed);
-        // The word list has its own BACK button: no MENU while it is open.
         if (_picker == Picker.Closed)
             Ui.Button(c, MenuButton, Strings.Menu, Hot(MenuButton));
     }
